@@ -12,9 +12,11 @@ mongoose.connect(process.env.MONGODB_URI || "mongodb://localhost:27017",()=>{
 app.use(bodyParser.json());
 //routes
 const spellsRoute = require("./routes/spells")
+const playerRoute = require("./routes/player")
 
 //app.use
 app.use("/spells", spellsRoute)
+app.use("/player", playerRoute)
 //app.listener
 app.listen(config.port, ()=>{
     console.log("Listening on port " + config.port)

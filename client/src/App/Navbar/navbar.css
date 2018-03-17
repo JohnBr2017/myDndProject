@@ -1,0 +1,33 @@
+.navbar {
+    display: flex;
+    justify-content: space-around;
+    top: 5px;
+    
+}
+
+.navlinkhome,
+.navlinkspell,
+.navlinkabout {
+    font-size: 25px;
+    font-family: fantasy;
+    color: orange;
+    text-shadow: 2px 2px black;
+}
+
+.navlinkabout:hover {
+    color: red;
+    text-shadow: 1px 1px orangered, 0 0 10px orange;
+
+}
+
+.navlinkhome:hover {
+    color: red;
+    text-shadow: 1px 1px orangered, 0 0 10px orange;
+
+}
+
+.navlinkspell:hover {
+    color: red;
+    text-shadow: 1px 1px orangered, 0 0 10px orange;
+
+}
