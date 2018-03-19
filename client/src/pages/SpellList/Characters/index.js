@@ -43,6 +43,7 @@ class Characters extends Component {
     }
     playerFilter = (e) => {
         let { value  } = e.target;
+        console.log(value)
         let list = this.props.playerList;
         for(let i = 0; i< list.length; i++){
             if(value === list[i]._id){
@@ -57,12 +58,11 @@ class Characters extends Component {
 
     render() {
         let { playerList } = this.props;
-
         return (
             <div>
                 <Form add clear submit={this.formSubmit}></Form>
                 <select onChange={this.playerFilter}>
-                    <option>Player</option>
+                    <option value="none" >Characters</option>
                     {playerList
                         .sort((a, b) => a.playerName !== b.playerName ? a.playerName.toLowerCase() < b.playerName.toLowerCase() ? -1 : 1 : 0)
                         .map((player, i) => { 

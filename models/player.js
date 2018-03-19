@@ -33,6 +33,11 @@ const playerSchema = new Schema({
     active: {
         type: Boolean,
         default: false
+    },
+    user: {
+        type: Schema.Types.ObjectId,
+        ref: "User",
+        required: true
     }
 })
 

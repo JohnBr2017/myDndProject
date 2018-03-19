@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { connect } from "react-redux"
 import { getSpellById } from "../../../../redux/spells";
-import { getPlayerList, addSpell } from "../../../../redux/players"
+import { getPlayerList, addSpell } from "../../../../redux/players";
 
 
 class Spell extends Component {
@@ -21,7 +21,6 @@ class Spell extends Component {
             level: "",
             school: "",
             classes: "",
-            hidden: true
         }
     }
 
@@ -37,8 +36,6 @@ class Spell extends Component {
 
 
     render() {
-
-
         let { spellName, description, higher_level, page, range, components, material, ritual, duration, casting_time, level, school, classes, schoolFilter, levelFilter, classFilter, spellId } = this.props;
         if ((schoolFilter === school || schoolFilter === "all")
             && (level.includes(levelFilter) || levelFilter === "all")
@@ -48,7 +45,7 @@ class Spell extends Component {
             return (
                 <div className="spell">
                     <h1 className="name">{spellName}</h1>
-                    <button className="addButton" onClick={() => this.handleSpell(this.props.oneSpell)} value={spellId}>add spell to player</button>
+                    <button  onClick={() => this.handleSpell(this.props.oneSpell)} value={spellId}>add spell to player</button>
                     <h2>{spellId}</h2>
                     <p className="page">Page{page}</p>
                     <p className="range">Range{range}</p>
@@ -73,7 +70,8 @@ class Spell extends Component {
 const mapStateToProps = (state) => {
     return {
         singleSpell: state.spell,
-        playerList: state.players
+        playerList: state.players,
+
     }
 }
 

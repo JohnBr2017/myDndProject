@@ -1,12 +1,19 @@
 import axios from "axios";
-const playerUrl = "/player/"
+const playerUrl = "/api/player/"
+let playerAxios = axios.create();
+
+playerAxios.interceptors.request.use((config)=>{  
+    const token = localStorage.getItem("token");
+    config.headers.Authorization = `Bearer ${token}`;
+    return config;
+})
 
 export function getPlayerList() {
     return dispatch => {
         dispatch({
             type: "IS_LOADING"
         })
-        axios.get(playerUrl)
+        playerAxios.get(playerUrl)
             .then(response => {
                 dispatch({
                     type: "GET_PLAYER_LIST",
@@ -17,7 +24,7 @@ export function getPlayerList() {
 }
 export function addNewCharacter(newPlayer) {
     return function (dispatch) {
-        axios.post(playerUrl, newPlayer)
+        playerAxios.post(playerUrl, newPlayer)
             .then(response => {
                 dispatch({
                     type: "ADD_NEW_CHARACTER",
@@ -32,7 +39,7 @@ export function addNewCharacter(newPlayer) {
 export function addSpell(player, spell) {
     return function (dispatch) {
         player.listOfSpells.push(spell)
-        axios.put(playerUrl + player._id, { value: player })
+        playerAxios.put(playerUrl + player._id, { value: player })
             .then(response => {
                 dispatch({
                     type: "ADD_SPELL_TO_PLAYER",
@@ -43,7 +50,7 @@ export function addSpell(player, spell) {
 }
 export function inputChange(id, value) {
     return dispatch => {
-        axios.put(playerUrl + id, { value })
+        playerAxios.put(playerUrl + id, { value })
             .then(response =>
                 dispatch({
                     type: "TOGGLE_ACTIVE",
@@ -56,7 +63,7 @@ export function inputChange(id, value) {
 
 export function deletedCharacter(id) {
     return function (dispatch) {
-        axios.delete(playerUrl + id, id)
+        playerAxios.delete(playerUrl + id, id)
             .then(response => {
                 dispatch({
                     type: "DELETE_THE_CHARACTER",
@@ -71,7 +78,7 @@ export function deletedCharacter(id) {
 export function deletedSpell(player, index) {
     return function (dispatch) {
         player.listOfSpells.splice((index), 1)
-        axios.put(playerUrl + player._id, { value: player })
+        playerAxios.put(playerUrl + player._id, { value: player })
             .then(response => {
                 dispatch({
                     type: "DELETE_THE_SPELL",

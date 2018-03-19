@@ -32,7 +32,7 @@ class Form extends Component {
         let {add, id} = this.props;
         if (add) {
             this.props.submit(this.state)
-            window.location.reload()
+            // window.location.reload()
             this.clearInput();
         } else {
             this.props.submit(this.state, id);

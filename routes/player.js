@@ -4,7 +4,7 @@ const playerModel = require("../models/player");
 
 playerRouter.route("/")
     .get((req, res) => {
-        playerModel.find(req.query, (err, foundPlayer) => {
+        playerModel.find({user: req.user._id}, (err, foundPlayer) => {
             if (err) {
                 console.log(err);
             } else {
@@ -13,7 +13,8 @@ playerRouter.route("/")
         })
     })
     .post((req, res) => {
-        let newPlayer = new playerModel(req.body)
+        let newPlayer = new playerModel(req.body);
+        newPlayer.user = req.user._id;
         newPlayer.save((err, newPlayer) => {
             if (err) {
                 console.log(err);
@@ -25,7 +26,7 @@ playerRouter.route("/")
 playerRouter.route("/:id")
     .get((req, res) => {
         let { id } = req.params
-        playerModel.findOne({ _id: id }, (err, foundPlayer) => {
+        playerModel.findOne({ _id: id, user: req.user._id }, (err, foundPlayer) => {
             if (err) {
                 console.log(err);
             } else {
@@ -35,7 +36,7 @@ playerRouter.route("/:id")
     })
     .delete((req, res) => {
         let { id } = req.params
-        playerModel.findByIdAndRemove(id, (err, deletedPlayer) => {
+        playerModel.findOneAndRemove({_id: id, user: req.user._id}, (err, deletedPlayer) => {
             if (err) {
                 console.log(err);
             } else {
@@ -45,7 +46,7 @@ playerRouter.route("/:id")
     })
     .put((req, res) => {
         let { id } = req.params
-        playerModel.findByIdAndUpdate(id, req.body.value, { new: true }, (err, updatedPlayer) => {
+        playerModel.findOneAndUpdate({_id: id, user: req.user._id}, req.body.value, { new: true }, (err, updatedPlayer) => {
             if (err) {
                 console.log(err);
             } else {
