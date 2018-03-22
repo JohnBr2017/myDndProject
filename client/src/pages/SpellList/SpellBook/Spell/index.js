@@ -55,14 +55,14 @@ class Spell extends Component {
             return (
                 <div >
                     <h1 onClick={this.handleModal} className="name">{spellName}</h1>
-                    <div style={spellModal} className="backdrop" />
+                    <div style={spellModal} onClick={this.handleModal} className="backdrop" />
                     <div style={spellModal} >
                         <div className="spell">
                             <h1 className="spellName">{spellName}</h1>
                             {isAuthenticated ?
                                 <button className="spelladdbuttons" onClick={() => this.handleSpell(this.props.oneSpell)} value={spellId}>add spell to player</button> : null}
-                            <button className="spellmodalbuttons" onClick={this.handleModal} >Click to close</button>
-                            {/* <h2>{spellId}</h2>
+                           {/* <button className="spellmodalbuttons" onClick={this.handleModal} >Click to close</button>
+                             <h2>{spellId}</h2>
                         <p className="page">Page{page}</p> */}
                             <p className="range">Range: {range}</p>
                             <p className="components">Components: {components}</p>

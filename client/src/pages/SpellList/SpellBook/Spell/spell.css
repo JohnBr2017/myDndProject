@@ -20,7 +20,7 @@ body {
     grid-template-columns: 1fr 1fr 1fr 1fr;
     grid-template-rows: minmax(20px, flex);
     grid-template-areas: 
-    ". . Maddbutton Mmodalbutton"
+    ". . . Maddbutton "
     "MspellName MspellName MspellName MspellName"
     "Mlevel . Mschool ."
     "Mcasting_time Mcasting_time Mritual  ."

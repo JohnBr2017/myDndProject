@@ -39,11 +39,10 @@ class Characters extends Component {
     }
     deleteCharacter(id) {
         this.props.deletedCharacter(id);
-        this.clearInput()
+        // this.clearInput()
     }
     playerFilter = (e) => {
         let { value  } = e.target;
-        console.log(value)
         let list = this.props.playerList;
         for(let i = 0; i< list.length; i++){
             if(value === list[i]._id){

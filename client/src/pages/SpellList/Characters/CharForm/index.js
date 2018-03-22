@@ -4,8 +4,8 @@ class Form extends Component {
     constructor(props) {
         super(props)
         this.state = {
-                playerName: "",
-                playerClass: ""
+                playerName: this.props.playerName || "",
+                playerClass: this.props.playerClass || ""
         }
         this.handleChange = this.handleChange.bind(this)
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -22,8 +22,8 @@ class Form extends Component {
     }
     clearInput(){
         this.setState({
-            playerName:"",
-            playerClass:""
+            playerName: "",
+            playerClass: ""       
         })
     }
 
@@ -32,7 +32,6 @@ class Form extends Component {
         let {add, id} = this.props;
         if (add) {
             this.props.submit(this.state)
-            // window.location.reload()
             this.clearInput();
         } else {
             this.props.submit(this.state, id);
