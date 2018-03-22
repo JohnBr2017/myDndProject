@@ -5,22 +5,23 @@ function SignupForm(props) {
         <div className="outerSign">
             <form className="signForm" onSubmit={props.handleSubmit}>
                 <div className="innerSign">
-                    <h3>Sign Up!</h3>
-                    <input
+                <h4 className="signTitle" >or</h4>
+                    <h3 className="signTitle" >Sign Up!</h3>
+                    <input className="signUser" 
                         onChange={props.handleChange}
                         value={props.username}
                         name="username"
                         type="text"
                         placeholder="Username" />
                     <br />
-                    <input
+                    <input className="signPass" 
                         onChange={props.handleChange}
                         value={props.password}
                         name="password"
                         type="password"
                         placeholder="Password" />
                     <br />
-                    <button type="submit">Submit</button>
+                    <button className="signButt"  type="submit">Submit</button>
                 </div> 
             </form>
         </div>

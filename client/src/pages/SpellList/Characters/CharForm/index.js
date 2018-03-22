@@ -42,11 +42,11 @@ class Form extends Component {
     render() {
         let { playerClass, playerName } = this.props
         return (
-            <div>
-                <form onSubmit={this.handleSubmit} >
-                    <input onChange={this.handleChange} value={playerName} name="playerName" type="text" placeholder="Character Name" />
-                    <input onChange={this.handleChange} value={playerClass} name="playerClass" type="text" placeholder="Class" />
-                    <button>New Character</button>
+            <div  >
+                <form className="characterForm" onSubmit={this.handleSubmit} >
+                    <input className="formName" onChange={this.handleChange} value={playerName} name="playerName" type="text" placeholder="Character Name" />
+                    <input className="formClass" onChange={this.handleChange} value={playerClass} name="playerClass" type="text" placeholder="Character Class" />
+                    <button className="formButt" >Create New Character</button>
                 </form>
             </div>
         )

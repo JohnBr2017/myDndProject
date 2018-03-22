@@ -21,7 +21,7 @@ class Character extends Component {
         if (filterPlayer === characterId) {
             return (
                 <div className="characterSection">
-                    <button className="deleteButton" onClick={() => deleteCharacter(characterId)} >X</button>
+                        <button className="deleteButton" onClick={() => deleteCharacter(characterId)} >Delete: {playerName} {playerClass} </button>
                     <h2 className="playerName">{playerName}</h2>
                     {/* <h3>{characterId}</h3> */}
                     <h3 className="playerClass">{playerClass}</h3>
@@ -36,7 +36,7 @@ class Character extends Component {
                     </div>
                 </div>
             )
-        }else{
+        } else {
             return null
         }
     }

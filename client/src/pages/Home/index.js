@@ -2,44 +2,40 @@ import React, { Component } from 'react'
 import SignIn from "../SignIn/index"
 import SignUp from "../SignUp/index"
 
+import "./home.css"
+
 class Home extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            signin: true,
-            signup: false
+            hidden: true,
         }
-        this.handleSignIn = this.handleSignIn.bind(this)
-        this.handleSignUp = this.handleSignUp.bind(this)
+        this.toggleSignInSignUp = this.toggleSignInSignUp.bind(this)
     }
-    handleSignIn()  {
+    toggleSignInSignUp() {
         this.setState({
-            signin: true,
-            signup: false
-        })
-    }    
-    handleSignUp()  {
-        this.setState({
-            signin: false,
-            signup: true
+            hidden: !this.state.hidden,
         })
     }
     render() {
-        let signin = { display: this.state.signin ? "block" : "none" };
-        let signup = { display: this.state.signup ? "block" : "none" }
+        let signin = { display: this.state.hidden ? "block" : "none" };
+        let signup = { display: !this.state.hidden ? "block" : "none" };
         return (
-            <div>
-                <h1 className="title">Welcome to the Mystical Tools</h1>
-                <p className="titleP">Spells? We got spells, this book currently has every spell in the Dungeons and Dragons, 5th edition, players handbook.</p>
-                <p className="titleP">Come back for future updates.</p>
-                <button onClick={this.handleSignIn} >Sign In</button>
-                <button onClick={this.handleSignUp} >Sign Up</button>
-                <div style={signin}>
-                    <SignIn />
+            <div className="homePage" >
+                <div className="homeInfo" >
+                    <h1 className="title">Welcome to the Mystical Tools</h1>
+                    <p className="titleP">Spells? We got spells, atleast all that is allowed under the Open-Gaming License (OGL).</p>
+                    <p className="titleP">Come back for future updates.</p>
                 </div>
-
-                <div style={signup}>
-                    <SignUp />
+                <div className="signInOrOut" >
+                    <button className="signupinbutt" style={signup} onClick={this.toggleSignInSignUp} >Sign In</button>
+                    <button className="signupinbutt" style={signin} onClick={this.toggleSignInSignUp} >Sign Up</button>
+                    <div style={signin}>
+                        <SignIn />
+                    </div>
+                    <div style={signup}>
+                        <SignUp />
+                    </div>
                 </div>
             </div>
         )

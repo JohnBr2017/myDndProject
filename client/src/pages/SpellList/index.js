@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import SpellBook from "./SpellBook"
 import Characters from "./Characters"
+import "./spellList.css"
 
 
 class SpellList extends Component {

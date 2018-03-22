@@ -59,15 +59,15 @@ class Characters extends Component {
     render() {
         let { playerList } = this.props;
         return (
-            <div>
+            <div >
                 <Form add clear submit={this.formSubmit}></Form>
-                <select onChange={this.playerFilter}>
+                <select className="playselect" onChange={this.playerFilter}>
                     <option value="none" >Characters</option>
                     {playerList
                         .sort((a, b) => a.playerName !== b.playerName ? a.playerName.toLowerCase() < b.playerName.toLowerCase() ? -1 : 1 : 0)
                         .map((player, i) => { 
                             let { playerName, playerClass, _id } = player;
-                            return <option className="testing" key={i} value={_id} >{playerName}, {playerClass}</option>
+                            return <option key={i} value={_id} >{playerName}, {playerClass}</option>
                         })
                     }
                 </select>

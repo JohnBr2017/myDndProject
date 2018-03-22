@@ -9,7 +9,7 @@
 .navlinkspell,
 .navlinkabout {
     font-size: 25px;
-    font-family: fantasy;
+    /* font-family: fantasy; */
     color: orange;
     text-shadow: 2px 2px black;
 }

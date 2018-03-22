@@ -6,33 +6,45 @@ class CharacterSpells extends Component {
     constructor(props) {
         super(props)
         this.state = {
-
+            hidden: true
         }
+        this.handleModal = this.handleModal.bind(this)
+    }
+    handleModal() {
+        this.setState({
+            hidden: !this.state.hidden
+        })
     }
 
     render() {
-        let { spellName,
-            //  description, higher_level, page, range, components, material, ritual, duration, concentration, casting_time, level, school, classes, spellId, 
-             deleteSpell, index } = this.props
+        let spellModal = { display: !this.state.hidden ? "block" : "none" }
+        let { spellName, description, higher_level, range, components, material, ritual, duration, casting_time, level, school, classes, deleteSpell, index 
+        // , page, spellId
+        } = this.props
         return (
-            <div className="spell">
-                 <button onClick={() => deleteSpell(index)} >X</button> 
-                <h1 className="spellName">{spellName}</h1>
-                {/* <h2>{spellId}</h2>
-                <p className="page">{page}</p>
-                <p className="range">{range}</p>
-                <p className="components">{components}</p>
-                <p className="ritual">{ritual}</p>
-                <p className="duration">{duration}</p>
-                <p className="concentration">{concentration}</p>
-                <p className="casting_time">{casting_time}</p>
-                <p className="level">{level}</p>
-                <p className="school">{school}</p>
-                <div className="classes">{classes.map((x, i) => <p key={i}>{x}</p>)}</div> 
-                <p className="material">{material}</p>
-                <div className="description">Description{description.map((x, i) => <p key={i}>{x}</p>)}</div>
-        <div className="higher_level">Higher Level{higher_level.map((x, i) => <p key={i}>{x}</p>)}</div> */}
-        </div>
+            <div className="playersSpells" >
+                <h1 onClick={this.handleModal} className="sName">{spellName}</h1>
+                    <button className="deletePlaySpell" onClick={() => deleteSpell(index)} >  
+                    Delete: {spellName} </button>
+                <div style={spellModal} className="backdrop" />
+                <div style={spellModal} className="spell">
+                    <h1 className="spellName">{spellName}</h1>
+                    <button onClick={this.handleModal} >Click to close</button>
+                        {/* <h2>{spellId}</h2>
+                        <p className="page">Page{page}</p> */}
+                    <p className="range">Range{range}</p>
+                    <p className="components">Components{components}</p>
+                    <p className="material">Material{material}</p>
+                    <p className="ritual">Ritual{ritual}</p>
+                    <p className="duration">Duration{duration}</p>
+                    <p className="casting_time">Casting Time{casting_time}</p>
+                    <p className="level">Level{level}</p>
+                    <p className="school">School{school}</p>
+                    <p className="classes">Classes {classes.join(", ")}</p>
+                    <div className="description">Description{description.map((x, i) => <p key={i}>{x}</p>)}</div>
+                    <div className="higher_level">Higher Level{higher_level.map((x, i) => <p key={i}>{x}</p>)}</div>
+                </div>
+            </div>
         )
     }
 }

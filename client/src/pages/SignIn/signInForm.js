@@ -1,32 +1,28 @@
 import React from 'react';
-// import { Link } from "react-router-dom";
-// import SignUp from '../SignUp/index';
+
 
 function signInForm(props) {
     return (
         <div className="outerSign">
             <form className="signForm" onSubmit={props.handleSubmit}>
                 <div className="innerSign">
-                    <h3>Log In</h3>
-                    <input
+                    <h4 className="signTitle" >or</h4>
+                    <h3 className="signTitle" >Log In</h3>
+                    <input className="signUser"
                         onChange={props.handleChange}
                         value={props.username}
                         name="username"
                         type="text"
                         placeholder="Username" />
                     <br />
-                    <input
+                    <input className="signPass"
                         onChange={props.handleChange}
                         value={props.password}
                         name="password"
                         type="password"
                         placeholder="Password" />
                     <br />
-                    <button type="submit">Submit</button>
-                    {/*<br />
-                    <br />
-                    <br />
-    <Link to="/SignUp">Sign Up</Link>*/}
+                    <button className="signButt" type="submit">Submit</button>
                 </div>
             </form>
         </div>

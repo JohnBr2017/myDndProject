@@ -1,0 +1,145 @@
+body {
+    font-family: 'Times New Roman', Times, serif;
+    background-image: url("../../../../images/paul-morris-177698-unsplash.jpg");
+    background-size: cover;
+}
+
+.spell {
+    width: 50%;
+    height: 80%;
+    position: absolute;
+    top: 10%;
+    left: 25%;
+    margin: auto;
+    z-index: 9999;
+    background-image: url("../../../../images/page.png");
+    overflow: scroll;
+    border: solid silver 10px;
+    border-radius: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: minmax(20px, flex);
+    grid-template-areas: 
+    ". . Maddbutton Mmodalbutton"
+    "MspellName MspellName MspellName MspellName"
+    "Mlevel . Mschool ."
+    "Mcasting_time Mcasting_time Mritual  ."
+    "Mrange Mrange . ."
+    "Mcomponents Mcomponents Mmaterial Mmaterial"
+    "Mcomponents Mcomponents Mmaterial Mmaterial"
+    "Mduration Mduration Mduration Mduration"
+    "Mdescription Mdescription Mdescription Mdescription"
+    "Mhigher_level Mhigher_level Mhigher_level Mhigher_level"
+    "Mclasses Mclasses Mclasses Mclasses"
+}
+.spellName{
+    grid-area: MspellName;
+
+}
+/* .page{
+    grid-area: Mpage;
+    border: red solid 1px;
+} */
+.range{
+    grid-area: Mrange;
+    text-indent: 10px;
+
+}
+.components{
+    grid-area: Mcomponents;
+    text-indent: 10px;
+
+}
+.material{
+    grid-area: Mmaterial;
+
+}
+.ritual{
+    grid-area: Mritual;
+
+}
+.duration{
+    grid-area: Mduration;
+    text-indent: 10px;
+
+}
+.casting_time{
+    grid-area: Mcasting_time;
+    text-indent: 10px;
+
+}
+.level{
+    grid-area: Mlevel;
+    text-indent: 10px;
+
+}
+.school{
+    grid-area: Mschool;
+
+}
+.classes{
+    grid-area: Mclasses;
+    text-indent: 10px;
+}
+.description{
+    grid-area: Mdescription;
+    text-indent: 25px;
+
+}
+.higher_level{
+    grid-area: Mhigher_level;
+    text-indent: 25px;
+
+}
+.spelladdbuttons{
+    grid-area: Maddbutton;
+    height: 30px;
+    border-radius: 20px;
+}
+.spellmodalbuttons{
+    grid-area: Mmodalbutton;
+    height: 30px;
+    border-radius: 20px;
+}
+
+.backdrop {
+    position: absolute;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 9998;
+    background: rgba(0, 0, 0, 0.7);
+}
+
+.spellBook {
+    height: 90vh;
+    margin: auto;
+    overflow: scroll;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-auto-rows:  minmax(30px, flex);
+    grid-template-areas: "page page ";
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.spellPage {
+    grid-area: page;
+}
+
+.spellOptions {
+    display: flex;
+    justify-content: space-around
+}
+
+.schoolSelection, .classSelection, .levelSelection{
+    width: 20%;
+    background-color: silver;
+    
+}
+
+.name {
+    font-size: 25px;
+    margin: auto;
+    text-align: center;
+}

@@ -80,7 +80,7 @@ class SpellBook extends Component {
                         .sort((a, b) => a.spellName !== b.spellName ? a.spellName.toLowerCase() < b.spellName.toLowerCase() ? -1 : 1 : 0)
                         .map((spell, i) => {
                             let { spellName, description, higher_level, page, range, components, material, ritual, duration, casting_time, level, school, classes, _id } = spell;
-                            return <Spell key={i} spellName={spellName} description={description} higher_level={higher_level} page={page} range={range} components={components} material={material} ritual={ritual} duration={duration}  casting_time={casting_time} level={level} school={school} classes={classes} schoolFilter={this.state.school} levelFilter={this.state.level} classFilter={this.state.classes} spellId={_id} oneSpell={spell}
+                            return <Spell className="spellPage" key={i} spellName={spellName} description={description} higher_level={higher_level} page={page} range={range} components={components} material={material} ritual={ritual} duration={duration}  casting_time={casting_time} level={level} school={school} classes={classes} schoolFilter={this.state.school} levelFilter={this.state.level} classFilter={this.state.classes} spellId={_id} oneSpell={spell}
                             ></Spell>
                         })}
                 </div>
