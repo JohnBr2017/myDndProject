@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import SignIn from "../SignIn/index"
 import SignUp from "../SignUp/index"
+import {connect} from "react-redux"
 
 import "./home.css"
 
@@ -20,6 +21,7 @@ class Home extends Component {
     render() {
         let signin = { display: this.state.hidden ? "block" : "none" };
         let signup = { display: !this.state.hidden ? "block" : "none" };
+        const isAuthenticated = this.props.isAuthenticated;
         return (
             <div className="homePage" >
                 <div className="homeInfo" >
@@ -27,7 +29,11 @@ class Home extends Component {
                     <p className="titleP">Spells? We got spells, atleast all that is allowed under the Open-Gaming License (OGL).</p>
                     <p className="titleP">Come back for future updates.</p>
                 </div>
-                <div className="signInOrOut" >
+                {isAuthenticated ?  
+                <div className="signInOrOut">
+                <h1 className="welcomeUser">Welcome {this.props.username.toUpperCase()}</h1>
+                </div> : null}
+                {isAuthenticated ?  null : <div className="signInOrOut" >
                     <button className="signupinbutt" style={signup} onClick={this.toggleSignInSignUp} >Sign In</button>
                     <button className="signupinbutt" style={signin} onClick={this.toggleSignInSignUp} >Sign Up</button>
                     <div style={signin}>
@@ -36,9 +42,13 @@ class Home extends Component {
                     <div style={signup}>
                         <SignUp />
                     </div>
-                </div>
+                </div> }
             </div>
         )
     }
 }
-export default Home
+const mapStateToProps = (state) => {
+    return state.user;
+}
+
+export default connect(mapStateToProps, {}) (Home)
